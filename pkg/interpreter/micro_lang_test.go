@@ -1,10 +1,11 @@
 package interpreter
 
 import (
-	"github.com/Chubru/micro-lang/pkg/parser"
-	"github.com/antlr4-go/antlr/v4"
 	"os"
 	"testing"
+
+	"github.com/Chubru/micro-lang/pkg/parser"
+	"github.com/antlr4-go/antlr/v4"
 )
 
 func TestInterpreter(t *testing.T) {

@@ -2,10 +2,11 @@ package interpreter
 
 import (
 	"fmt"
-	parser2 "github.com/Chubru/micro-lang/pkg/parser"
-	"github.com/antlr4-go/antlr/v4"
 	"log"
 	"strconv"
+
+	parser2 "github.com/Chubru/micro-lang/pkg/parser"
+	"github.com/antlr4-go/antlr/v4"
 )
 
 func NewInterpreter() *Interpreter {

@@ -1,12 +1,14 @@
 package cmd
 
 import (
+	"log"
+	"os"
+
+	"github.com/Chubru/micro-lang/pkg/compiler"
 	"github.com/Chubru/micro-lang/pkg/interpreter"
 	parser2 "github.com/Chubru/micro-lang/pkg/parser"
 	"github.com/antlr4-go/antlr/v4"
 	"github.com/spf13/cobra"
-	"log"
-	"os"
 )
 
 var inputFile string
@@ -28,16 +30,15 @@ func Run(inputFile, outputFile string) {
 	tree := p.Prog()
 
 	if outputFile != "" {
-		log.Printf("Compiling file: %s to %s (compiler not implemented yet)", inputFile, outputFile)
-		/*
-			compiler := compiler.NewCompiler()
-			compiledCode := compiler.Visit(tree)
+		compiler := compiler.NewCompiler()
+		compiler.Visit(tree)
+		compiledCode := compiler.GetCode()
 
-			err := saveToFile(outputFile, compiledCode.(string))
-			if err != nil {
-				log.Fatalf("Error saving to file: %s", err)
-			}
-		*/
+		err := saveToFile(outputFile, compiledCode)
+		if err != nil {
+			log.Fatalf("Error saving to file: %s", err)
+		}
+
 	} else {
 		interpreter := interpreter.NewInterpreter()
 		interpreter.Visit(tree)
